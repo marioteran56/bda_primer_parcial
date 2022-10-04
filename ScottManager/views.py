@@ -56,9 +56,8 @@ class DeptView(View):
     def post(self, request):
         cursor = connection.cursor()
         jd = json.loads(request.body)
-        jd_values = list(jd.values())
         try:
-            cursor.callproc('ADD_DEPTO', jd_values)
+            cursor.callproc('ADD_DEPTO', (jd['deptno'], jd['dname'], jd['loc']))
         except Exception as err:
             data = {
                 'message': 'No department inserted.',
@@ -155,9 +154,8 @@ class EmpView(View):
     def post(self, request):
         cursor = connection.cursor()
         jd = json.loads(request.body)
-        jd_values = list(jd.values())
         try:
-            cursor.callproc('ADD_EMP', jd_values)
+            cursor.callproc('ADD_EMP', (jd['empno'], jd['ename'], jd['job'], jd['mgr'], jd['hiredate'], jd['sal'], jd['comm'], jd['deptno']))
         except Exception as err:
             data = {
                 'message': 'No employee inserted.',
