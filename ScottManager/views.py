@@ -129,7 +129,7 @@ class EmpView(View):
             else:
                 data = {
                     'message': 'Success',
-                    'departments': json_data
+                    'employees': json_data
                 }
             return JsonResponse(data)
         else:
@@ -147,7 +147,7 @@ class EmpView(View):
             else:
                 data = {
                     'message': 'Success',
-                    'departments': json_data
+                    'employees': json_data
                 }
             return JsonResponse(data)
     
